@@ -1,6 +1,6 @@
 import unittest
 
-from htmlnode import HTMLNode
+from htmlnode import HTMLNode , LeafNode
 node3= HTMLNode()
 dict = {"href":"www.google.com","target":"_blank"}
 dict2 = {"href2":"www.google2.com","target2":"_blank2"}
@@ -76,6 +76,45 @@ class TestHTML(unittest.TestCase):
             node.__repr__(),
             "HTMLNode(p, What a strange world, children: None, {'class': 'primary'})",
         )
+    def test_leaf(self):
+        leaf = LeafNode("a", "Click me!", {"href": "https://google.com"})
+        leaf2=LeafNode("p", "This is a paragraph of text.")
+
+        self.assertEqual(
+            leaf.to_html(),
+            '<a href="https://google.com">Click me!</a>',
+        )
+        self.assertEqual(
+            leaf2.to_html(),
+            '<p>This is a paragraph of text.</p>',
+        )
+        self.assertEqual(
+            leaf.tag,
+            "a",
+        )
+        self.assertEqual(
+            leaf.value,
+            "Click me!",
+        )
+        self.assertEqual(
+            leaf.props,
+            {"href": "https://google.com"},
+        )
+        self.assertEqual(
+            leaf.children,
+            None,
+        )
+        self.assertEqual(
+            leaf.__repr__(),
+            "HTMLNode(a, Click me!, children: None, {'href': 'https://google.com'})",
+        )
+    def test_to_html_no_children(self):
+        node = LeafNode("p", "Hello, world!")
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+
+    def test_to_html_no_tag(self):
+        node = LeafNode(None, "Hello, world!")
+        self.assertEqual(node.to_html(), "Hello, world!")
 
   
     
