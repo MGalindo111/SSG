@@ -13,19 +13,7 @@ import re
 
 
 def main():
-    # Create a new instance of the TextNode class
-    my_node = TextNode("Hello, World!", TextType.NORMAL, "www.google.com")
-    #print (my_node.__repr__())
-
-    heading="#####This is a heading\n\nThis is a paragraph of text. It has some **bold** and *italic* words inside of it.* This is the first list item in a list block* This is a list item* This is another list item"
-    test = "1. this *is* an **block**\n2. `hello`\n3. hi"
-
-    
-    y = markdown_to_html_node(test)
-    
-    
-
-    print(y.to_html())
+    if os.path.exists()
 
 
 
