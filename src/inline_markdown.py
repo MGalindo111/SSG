@@ -46,6 +46,7 @@ def split_nodes_delimiter(old_nodes,delimiter,text_type):
                 
 
         else: 
+            
             raise Exception("No delimiter found")
     return new_nodes
 def extract_markdown_images(text):

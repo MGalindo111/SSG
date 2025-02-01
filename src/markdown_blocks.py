@@ -84,8 +84,10 @@ def markdowntype_to_html_node(block,type):
         line=[]
         blocks = block.split("\n")
         for arry in blocks:
-            arry= arry.lstrip("- ")
-            arry = arry.lstrip("* ")
+            if arry.startswith("- "):
+                arry= arry.lstrip("- ")
+            if arry.startswith("* "):
+                arry = arry.lstrip("* ")
             text= text_to_text_children(arry)
             line.append(ParentNode("li",text))
                 
